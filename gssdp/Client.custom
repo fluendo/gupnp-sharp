@@ -1,0 +1,11 @@
+[DllImport("libgssdp-1.0.dll")]
+static extern IntPtr gssdp_client_new(IntPtr main_context, IntPtr iface, out IntPtr error);
+public Client (string iface) : base (IntPtr.Zero) {
+	if (GetType () != typeof (Client)) {
+		CreateNativeObject (new string [0], new GLib.Value[0]);
+		return;
+	}
+	IntPtr error = IntPtr.Zero;
+	Raw = gssdp_client_new(IntPtr.Zero, IntPtr.Zero, out error);
+	if (error != IntPtr.Zero) throw new GLib.GException (error);
+}

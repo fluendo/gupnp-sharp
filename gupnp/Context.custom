@@ -1,0 +1,11 @@
+[DllImport("libgupnp-1.0.dll")]
+static extern IntPtr gupnp_context_new(IntPtr main_context, IntPtr iface, uint port, out IntPtr error);
+public Context (string iface) : base (IntPtr.Zero) {
+	if (GetType () != typeof (Context)) {
+		CreateNativeObject (new string [0], new GLib.Value[0]);
+		return;
+	}
+	IntPtr error = IntPtr.Zero;
+	Raw = gupnp_context_new(IntPtr.Zero, IntPtr.Zero, 0, out error);
+	if (error != IntPtr.Zero) throw new GLib.GException (error);
+}

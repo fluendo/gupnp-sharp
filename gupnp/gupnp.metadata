@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<metadata>
+	<attr path="/api/namespace/*/property[@type='GupnpXmlDoc']" name="type">GUPnPXMLDoc</attr>
+	<attr path="/api/namespace/*/property[@type='GupnpRootDevice']" name="type">GUPnPRootDevice</attr>
+	<attr path="/api/namespace/*/property[@type='GupnpResourceFactory']" name="type">GUPnPResourceFactory</attr>
+	<attr path="/api/namespace/*/property[@type='GupnpContext']" name="type">GUPnPContext</attr>
+	<attr path="/api/namespace/*/property[@type='GupnpContextManager']" name="type">GUPnPContextManager</attr>
+	<attr path="/api/namespace/*/*/*/parameter[@type='GupnpContext']" name="type">GUPnPContext</attr>
+	<attr path="/api/namespace/object[@name='ServiceIntrospection']" name="parent">GObject</attr>
+	<add-node path="/api/namespace/object[@name='ControlPoint']">
+		<constructor cname="gupnp_control_point_new">
+			<parameters>
+				<parameter type="GUPnPContext*" name="context"/>
+				<parameter type="const-char*" name="target"/>
+			</parameters>
+		</constructor>
+	</add-node>
+	<add-node path="/api/namespace/object[@name='ServiceInfo']">
+		<method name="GetIntrospection" cname="gupnp_service_info_get_introspection">
+			<parameters>
+				<parameter type="GError**" name="error"/>
+			</parameters>
+			<return-type type="GUPnPServiceIntrospection*"/>
+		</method>
+	</add-node>
+	<add-node path="/api/namespace/object[@name='ServiceIntrospection']">
+		<method name="ListActionNames" cname="gupnp_service_introspection_list_action_names">
+			<return-type type="const-GList*"/>
+		</method>
+	</add-node>
+</metadata>

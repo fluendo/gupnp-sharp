@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<api>
+  <!--
+
+        This file was automatically generated.
+        Please DO NOT MODIFY THIS FILE, modify .metadata files instead.
+
+-->
+  <namespace name="GUPnP" library="libgupnp-1.0.dll">
+    <enum name="ControlError" cname="GUPnPControlError" type="enum">
+      <member cname="GUPNP_CONTROL_ERROR_INVALID_ACTION" name="InvalidAction" value="401" />
+      <member cname="GUPNP_CONTROL_ERROR_INVALID_ARGS" name="InvalidArgs" value="402" />
+      <member cname="GUPNP_CONTROL_ERROR_OUT_OF_SYNC" name="OutOfSync" value="403" />
+      <member cname="GUPNP_CONTROL_ERROR_ACTION_FAILED" name="ActionFailed" value="501" />
+    </enum>
+    <enum name="EventingError" cname="GUPnPEventingError" type="enum">
+      <member cname="GUPNP_EVENTING_ERROR_SUBSCRIPTION_FAILED" name="SubscriptionFailed" />
+      <member cname="GUPNP_EVENTING_ERROR_SUBSCRIPTION_LOST" name="SubscriptionLost" />
+      <member cname="GUPNP_EVENTING_ERROR_NOTIFY_FAILED" name="NotifyFailed" />
+    </enum>
+    <enum name="ServerError" cname="GUPnPServerError" type="enum">
+      <member cname="GUPNP_SERVER_ERROR_INTERNAL_SERVER_ERROR" name="InternalServerError" />
+      <member cname="GUPNP_SERVER_ERROR_NOT_FOUND" name="NotFound" />
+      <member cname="GUPNP_SERVER_ERROR_NOT_IMPLEMENTED" name="NotImplemented" />
+      <member cname="GUPNP_SERVER_ERROR_INVALID_RESPONSE" name="InvalidResponse" />
+      <member cname="GUPNP_SERVER_ERROR_INVALID_URL" name="InvalidUrl" />
+      <member cname="GUPNP_SERVER_ERROR_OTHER" name="Other" />
+    </enum>
+    <enum name="ServiceActionArgDirection" cname="GUPnPServiceActionArgDirection" type="enum">
+      <member cname="GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN" name="In" />
+      <member cname="GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT" name="Out" />
+    </enum>
+    <enum name="XMLError" cname="GUPnPXMLError" type="enum">
+      <member cname="GUPNP_XML_ERROR_PARSE" name="Parse" />
+      <member cname="GUPNP_XML_ERROR_NO_NODE" name="NoNode" />
+      <member cname="GUPNP_XML_ERROR_EMPTY_NODE" name="EmptyNode" />
+      <member cname="GUPNP_XML_ERROR_OTHER" name="Other" />
+    </enum>
+    <callback name="ServiceIntrospectionCallback" cname="GUPnPServiceIntrospectionCallback">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="GUPnPServiceInfo*" name="info" />
+        <parameter type="GUPnPServiceIntrospection*" name="introspection" />
+        <parameter type="const-GError*" name="error" />
+        <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <callback name="ServiceProxyActionCallback" cname="GUPnPServiceProxyActionCallback">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="GUPnPServiceProxy*" name="proxy" />
+        <parameter type="GUPnPServiceProxyAction*" name="action" />
+        <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <callback name="ServiceProxyNotifyCallback" cname="GUPnPServiceProxyNotifyCallback">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="GUPnPServiceProxy*" name="proxy" />
+        <parameter type="const-char*" name="variable" />
+        <parameter type="GValue*" name="value" />
+        <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <object name="Context" cname="GUPnPContext" parent="GSSDPClient">
+      <field name="Priv" cname="priv" type="GUPnPContextPrivate*" />
+      <property name="Port" cname="port" type="guint" readable="true" writeable="true" construct-only="true" />
+      <property name="Server" cname="server" type="SoupServer" readable="true" />
+      <property name="Session" cname="session" type="SoupSession" readable="true" />
+      <property name="SubscriptionTimeout" cname="subscription-timeout" type="guint" readable="true" writeable="true" construct-only="true" />
+      <method name="GetType" cname="gupnp_context_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ContextManager" cname="GUPnPContextManager" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPContextManagerPrivate*" />
+      <property name="MainContext" cname="main-context" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="Port" cname="port" type="guint" readable="true" writeable="true" construct-only="true" />
+      <property name="ContextManager" cname="context-manager" type="GupnpContextManager" writeable="true" construct-only="true" />
+      <signal name="ContextAvailable" cname="context-available" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GUPnPContextManager*" />
+          <parameter name="p0" type="GupnpContext" />
+        </parameters>
+      </signal>
+      <signal name="ContextUnavailable" cname="context-unavailable" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GUPnPContextManager*" />
+          <parameter name="p0" type="GupnpContext" />
+        </parameters>
+      </signal>
+      <method name="GetType" cname="gupnp_context_manager_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ControlPoint" cname="GUPnPControlPoint" parent="GSSDPResourceBrowser">
+      <field name="Priv" cname="priv" type="GUPnPControlPointPrivate*" />
+      <property name="ResourceFactory" cname="resource-factory" type="GupnpResourceFactory" readable="true" writeable="true" construct-only="true" />
+      <signal name="DeviceProxyAvailable" cname="device-proxy-available" when="LAST" field_name="device_proxy_available">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPControlPoint*" name="control_point" />
+          <parameter type="GUPnPDeviceProxy*" name="proxy" />
+        </parameters>
+      </signal>
+      <signal name="DeviceProxyUnavailable" cname="device-proxy-unavailable" when="LAST" field_name="device_proxy_unavailable">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPControlPoint*" name="control_point" />
+          <parameter type="GUPnPDeviceProxy*" name="proxy" />
+        </parameters>
+      </signal>
+      <signal name="ServiceProxyAvailable" cname="service-proxy-available" when="LAST" field_name="service_proxy_available">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPControlPoint*" name="control_point" />
+          <parameter type="GUPnPServiceProxy*" name="proxy" />
+        </parameters>
+      </signal>
+      <signal name="ServiceProxyUnavailable" cname="service-proxy-unavailable" when="LAST" field_name="service_proxy_unavailable">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPControlPoint*" name="control_point" />
+          <parameter type="GUPnPServiceProxy*" name="proxy" />
+        </parameters>
+      </signal>
+      <method name="GetType" cname="gupnp_control_point_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="Device" cname="GUPnPDevice" parent="GUPnPDeviceInfo">
+      <field name="Priv" cname="priv" type="GUPnPDevicePrivate*" />
+      <property name="RootDevice" cname="root-device" type="GupnpRootDevice" readable="true" writeable="true" construct-only="true" />
+      <method name="GetType" cname="gupnp_device_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DeviceInfo" cname="GUPnPDeviceInfo" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPDeviceInfoPrivate*" />
+      <property name="ResourceFactory" cname="resource-factory" type="GupnpResourceFactory" readable="true" writeable="true" construct-only="true" />
+      <property name="Context" cname="context" type="GupnpContext" readable="true" writeable="true" construct-only="true" />
+      <property name="Location" cname="location" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="Udn" cname="udn" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="DeviceType" cname="device-type" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="UrlBase" cname="url-base" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="Document" cname="document" type="GupnpXmlDoc" writeable="true" construct-only="true" />
+      <property name="Element" cname="element" type="gpointer" writeable="true" construct-only="true" />
+      <virtual_method name="GetElement" cname="get_element">
+        <return-type type="xmlNode*" />
+        <parameters>
+          <parameter type="GUPnPDeviceInfo*" name="info" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetDevice" cname="get_device">
+        <return-type type="GUPnPDeviceInfo*" />
+        <parameters>
+          <parameter type="GUPnPDeviceInfo*" name="info" />
+          <parameter type="xmlNode*" name="element" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetService" cname="get_service">
+        <return-type type="GUPnPServiceInfo*" />
+        <parameters>
+          <parameter type="GUPnPDeviceInfo*" name="info" />
+          <parameter type="xmlNode*" name="element" />
+        </parameters>
+      </virtual_method>
+      <method name="GetType" cname="gupnp_device_info_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DeviceProxy" cname="GUPnPDeviceProxy" parent="GUPnPDeviceInfo">
+      <field name="Priv" cname="priv" type="GUPnPDeviceProxyPrivate*" />
+      <method name="GetType" cname="gupnp_device_proxy_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="NetworkManager" cname="GUPnPNetworkManager" parent="GUPnPContextManager">
+      <field name="Priv" cname="priv" type="GUPnPNetworkManagerPrivate*" />
+      <method name="GetType" cname="gupnp_network_manager_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ResourceFactory" cname="GUPnPResourceFactory" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPResourceFactoryPrivate*" />
+      <method name="GetType" cname="gupnp_resource_factory_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="RootDevice" cname="GUPnPRootDevice" parent="GUPnPDevice">
+      <field name="Priv" cname="priv" type="GUPnPRootDevicePrivate*" />
+      <property name="DescriptionDoc" cname="description-doc" type="GupnpXmlDoc" writeable="true" construct-only="true" />
+      <property name="DescriptionPath" cname="description-path" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="DescriptionDir" cname="description-dir" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="Available" cname="available" type="gboolean" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_root_device_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="Service" cname="GUPnPService" parent="GUPnPServiceInfo">
+      <field name="Priv" cname="priv" type="GUPnPServicePrivate*" />
+      <property name="RootDevice" cname="root-device" type="GupnpRootDevice" readable="true" writeable="true" construct-only="true" />
+      <signal name="ActionInvoked" cname="action-invoked" when="LAST" field_name="action_invoked">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPService*" name="service" />
+          <parameter type="GUPnPServiceAction*" name="action" />
+        </parameters>
+      </signal>
+      <signal name="QueryVariable" cname="query-variable" when="LAST" manual="true" field_name="query_variable">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPService*" name="service" />
+          <parameter type="const-char*" name="variable" />
+          <parameter type="GValue*" name="value" />
+        </parameters>
+      </signal>
+      <virtual_method name="NotifyFailed" cname="notify_failed">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPService*" name="service" />
+          <parameter type="const-GList*" name="callback_urls" />
+          <parameter type="const-GError*" name="reason" />
+        </parameters>
+      </virtual_method>
+      <method name="GetType" cname="gupnp_service_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ServiceInfo" cname="GUPnPServiceInfo" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPServiceInfoPrivate*" />
+      <property name="Context" cname="context" type="GupnpContext" readable="true" writeable="true" construct-only="true" />
+      <property name="Location" cname="location" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="Udn" cname="udn" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="ServiceType" cname="service-type" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="UrlBase" cname="url-base" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="Document" cname="document" type="GupnpXmlDoc" writeable="true" construct-only="true" />
+      <property name="Element" cname="element" type="gpointer" writeable="true" construct-only="true" />
+      <method name="GetType" cname="gupnp_service_info_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ServiceIntrospection" cname="GUPnPServiceIntrospection">
+      <property name="Scpd" cname="scpd" type="gpointer" writeable="true" construct-only="true" />
+      <method name="GetType" cname="gupnp_service_introspection_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ServiceProxy" cname="GUPnPServiceProxy" parent="GUPnPServiceInfo">
+      <field name="Priv" cname="priv" type="GUPnPServiceProxyPrivate*" />
+      <property name="Subscribed" cname="subscribed" type="gboolean" readable="true" writeable="true" />
+      <signal name="SubscriptionLost" cname="subscription-lost" when="LAST" manual="true" field_name="subscription_lost">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPServiceProxy*" name="proxy" />
+          <parameter type="const-GError*" name="reason" />
+        </parameters>
+      </signal>
+      <method name="GetType" cname="gupnp_service_proxy_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="XMLDoc" cname="GUPnPXMLDoc" parent="GObject">
+      <field name="Doc" cname="doc" type="xmlDoc*" />
+      <method name="GetType" cname="gupnp_xml_doc_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <boxed name="ServiceAction" cname="GUPnPServiceAction" opaque="true">
+      <method name="GetType" cname="gupnp_service_action_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </boxed>
+    <struct name="ServiceActionArgInfo" cname="GUPnPServiceActionArgInfo">
+      <field name="Name" cname="name" type="char*" />
+      <field name="Direction" cname="direction" type="GUPnPServiceActionArgDirection" />
+      <field name="RelatedStateVariable" cname="related_state_variable" type="char*" />
+      <field name="Retval" cname="retval" type="gboolean" />
+    </struct>
+    <struct name="ServiceActionInfo" cname="GUPnPServiceActionInfo">
+      <field name="Name" cname="name" type="char*" />
+      <field name="Arguments" cname="arguments" type="GList*" />
+    </struct>
+    <struct name="ServiceProxyAction" cname="GUPnPServiceProxyAction" opaque="true" />
+    <struct name="ServiceStateVariableInfo" cname="GUPnPServiceStateVariableInfo">
+      <field name="Name" cname="name" type="char*" />
+      <field name="SendEvents" cname="send_events" type="gboolean" />
+      <field name="IsNumeric" cname="is_numeric" type="gboolean" />
+      <field name="Type" cname="type" type="GType" />
+      <field name="DefaultValue" cname="default_value" type="GValue" />
+      <field name="Minimum" cname="minimum" type="GValue" />
+      <field name="Maximum" cname="maximum" type="GValue" />
+      <field name="Step" cname="step" type="GValue" />
+      <field name="AllowedValues" cname="allowed_values" type="GList*" />
+    </struct>
+    <struct name="UnixContextManagerClass" cname="GUPnPUnixContextManagerClass">
+      <field name="ParentClass" cname="parent_class" type="GUPnPContextManagerClass" />
+      <callback cname="_gupnp_reserved1">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="void" name="arg1" />
+        </parameters>
+      </callback>
+      <callback cname="_gupnp_reserved2">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="void" name="arg1" />
+        </parameters>
+      </callback>
+      <callback cname="_gupnp_reserved3">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="void" name="arg1" />
+        </parameters>
+      </callback>
+      <callback cname="_gupnp_reserved4">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="void" name="arg1" />
+        </parameters>
+      </callback>
+    </struct>
+    <class name="Global" cname="GUPnPGlobal">
+      <method name="ControlErrorQuark" cname="gupnp_control_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+      <method name="EventingErrorQuark" cname="gupnp_eventing_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+      <method name="ServerErrorQuark" cname="gupnp_server_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+      <method name="XmlErrorQuark" cname="gupnp_xml_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+    </class>
+  </namespace>
+</api>

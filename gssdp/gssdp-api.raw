@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<api>
+  <!--
+
+        This file was automatically generated.
+        Please DO NOT MODIFY THIS FILE, modify .metadata files instead.
+
+-->
+  <namespace name="GSSDP" library="libgssdp-1.0.dll">
+    <enum name="Error" cname="GSSDPError" type="enum">
+      <member cname="GSSDP_ERROR_NO_IP_ADDRESS" name="NoIpAddress" />
+      <member cname="GSSDP_ERROR_FAILED" name="Failed" />
+    </enum>
+    <enum name="SocketSourceType" cname="GSSDPSocketSourceType" type="enum">
+      <member cname="GSSDP_SOCKET_SOURCE_TYPE_REQUEST" name="Request" />
+      <member cname="GSSDP_SOCKET_SOURCE_TYPE_MULTICAST" name="Multicast" />
+    </enum>
+    <object name="Client" cname="GSSDPClient" parent="GObject">
+      <field name="Priv" cname="priv" type="GSSDPClientPrivate*" />
+      <property name="ServerId" cname="server-id" type="gchar*" readable="true" writeable="true" />
+      <property name="MainContext" cname="main-context" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="Error" cname="error" type="gpointer" writeable="true" construct-only="true" />
+      <property name="Interface" cname="interface" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="Network" cname="network" type="gchar*" readable="true" writeable="true" construct="true" />
+      <property name="HostIp" cname="host-ip" type="gchar*" readable="true" />
+      <property name="Active" cname="active" type="gboolean" readable="true" writeable="true" />
+      <signal name="MessageReceived" cname="message-received" when="LAST" manual="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GSSDPClient*" />
+          <parameter name="p0" type="gchar*" />
+          <parameter name="p1" type="guint32" />
+          <parameter name="p2" type="gint32" />
+          <parameter name="p3" type="gpointer" />
+        </parameters>
+      </signal>
+      <method name="GetType" cname="gssdp_client_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ResourceBrowser" cname="GSSDPResourceBrowser" parent="GObject">
+      <field name="Priv" cname="priv" type="GSSDPResourceBrowserPrivate*" />
+      <property name="Client" cname="client" type="GssdpClient" readable="true" writeable="true" construct-only="true" />
+      <property name="Target" cname="target" type="gchar*" readable="true" writeable="true" />
+      <property name="Mx" cname="mx" type="guint" readable="true" writeable="true" />
+      <property name="Active" cname="active" type="gboolean" readable="true" writeable="true" />
+      <signal name="ResourceAvailable" cname="resource-available" when="LAST" manual="true" field_name="resource_available">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GSSDPResourceBrowser*" name="resource_browser" />
+          <parameter type="const-char*" name="usn" />
+          <parameter type="const-GList*" name="locations" />
+        </parameters>
+      </signal>
+      <signal name="ResourceUnavailable" cname="resource-unavailable" when="LAST" field_name="resource_unavailable">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GSSDPResourceBrowser*" name="resource_browser" />
+          <parameter type="const-char*" name="usn" />
+        </parameters>
+      </signal>
+      <method name="GetType" cname="gssdp_resource_browser_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ResourceGroup" cname="GSSDPResourceGroup" parent="GObject">
+      <field name="Priv" cname="priv" type="GSSDPResourceGroupPrivate*" />
+      <property name="Client" cname="client" type="GssdpClient" readable="true" writeable="true" construct-only="true" />
+      <property name="MaxAge" cname="max-age" type="guint" readable="true" writeable="true" />
+      <property name="Available" cname="available" type="gboolean" readable="true" writeable="true" />
+      <property name="MessageDelay" cname="message-delay" type="guint" readable="true" writeable="true" />
+      <method name="GetType" cname="gssdp_resource_group_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="SocketSource" cname="GSSDPSocketSource">
+      <property name="Type" cname="type" type="gint" writeable="true" construct-only="true" />
+      <property name="HostIp" cname="host-ip" type="gchar*" writeable="true" construct-only="true" />
+    </object>
+    <class name="Global" cname="GSSDPGlobal">
+      <method name="ErrorQuark" cname="gssdp_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+    </class>
+  </namespace>
+</api>

@@ -1,0 +1,8 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+Name: gupnp-sharp
+Description: gUPnP# bindings
+Version: @VERSION@
+Libs: -r:${libdir}/mono/gssdp-sharp-1.0/gssdp-sharp.dll -r:${libdir}/mono/gupnp-sharp-1.0/gupnp-sharp.dll

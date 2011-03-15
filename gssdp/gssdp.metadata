@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<metadata>
+	<attr path="/api/namespace/object[@name='ResourceBrowser']/property[@name='Client']" name="type">GSSDPClient</attr>
+	<attr path="/api/namespace/object[@name='ResourceGroup']/property[@name='Client']" name="type">GSSDPClient</attr>
+	<attr path="/api/namespace/object[@name='Client']/signal[@name='MessageReceived']/parameters/parameter[@name='p0']" name="type">const-gchar*</attr>
+	<attr path="/api/namespace/object[@name='Client']/signal[@name='MessageReceived']/parameters/parameter[@name='p0']" name="name">ip</attr>
+	<attr path="/api/namespace/object[@name='Client']/signal[@name='MessageReceived']/parameters/parameter[@name='p1']" name="name">port</attr>
+	<attr path="/api/namespace/object[@name='Client']/signal[@name='MessageReceived']/parameters/parameter[@name='p2']" name="name">type</attr>
+	<add-node path="/api/namespace/object[@name='ResourceGroup']">
+		<method name="AddResource" cname="gssdp_resource_group_add_resource">
+			<parameters>
+				<parameter type="const-char*" name="target"/>
+				<parameter type="const-char*" name="usn"/>
+				<parameter type="GList*" name="locations"/>
+			</parameters>
+			<return-type type="guint"/>
+		</method>
+	</add-node>
+	<add-node path="/api/namespace/object[@name='ResourceGroup']">
+		<method name="AddResourceSimple" cname="gssdp_resource_group_add_resource_simple">
+			<parameters>
+				<parameter type="const-char*" name="target"/>
+				<parameter type="const-char*" name="usn"/>
+				<parameter type="const-char*" name="location"/>
+			</parameters>
+			<return-type type="guint"/>
+		</method>
+	</add-node>
+</metadata>

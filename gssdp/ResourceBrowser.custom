@@ -1,0 +1,12 @@
+[DllImport("libgssdp-1.0.dll")]
+static extern IntPtr gssdp_resource_browser_new(IntPtr client, IntPtr target);
+public ResourceBrowser (Client client, string target) : base (IntPtr.Zero) {
+	if (GetType () != typeof (ResourceBrowser)) {
+		CreateNativeObject (new string [0], new GLib.Value[0]);
+		return;
+	}
+	IntPtr native_target = GLib.Marshaller.StringToPtrGStrdup (target);
+	Raw = gssdp_resource_browser_new(client.Handle, native_target);
+	GLib.Marshaller.Free (native_target);
+}
+
