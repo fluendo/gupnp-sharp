@@ -1,0 +1,9 @@
+[DllImport("libgssdp-1.0.dll")]
+static extern IntPtr gssdp_resource_group_new(IntPtr client);
+public ResourceGroup (Client client) : base (IntPtr.Zero) {
+	if (GetType () != typeof (ResourceGroup)) {
+		CreateNativeObject (new string [0], new GLib.Value[0]);
+		return;
+	}
+	Raw = gssdp_resource_group_new(client.Handle);
+}
