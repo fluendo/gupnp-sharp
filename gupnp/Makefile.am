@@ -19,7 +19,7 @@ sources =
 
 build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
 
-customs = Context.custom 
+customs = Context.custom ServiceActionInfo.custom ServiceIntrospection.custom ServiceStateVariableInfo.custom 
 
 MAINTAINERCLEANFILES = Makefile.in
 

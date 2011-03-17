@@ -1,0 +1,5 @@
+public GLib.List AllowedValues {
+	get {
+		return _allowed_values == IntPtr.Zero ? new GLib.List(typeof(string)) : new GLib.List(_allowed_values, typeof(string), false, false);
+	}
+}

@@ -15,6 +15,24 @@
 			</parameters>
 		</constructor>
 	</add-node>
+	<add-node path="/api/namespace/object[@name='RootDevice']">
+		<constructor cname="gupnp_root_device_new">
+			<parameters>
+				<parameter type="GUPnPContext*" name="context"/>
+				<parameter type="const-char*" name="description_path"/>
+				<parameter type="const-char*" name="description_dir"/>
+			</parameters>
+		</constructor>
+		<constructor cname="gupnp_root_device_new_full">
+			<parameters>
+				<parameter type="GUPnPContext*" name="context"/>
+				<parameter type="GUPnPResourceFactory*" name="factory"/>
+				<parameter type="const-char*" name="description_doc"/>
+				<parameter type="const-char*" name="description_path"/>
+				<parameter type="const-char*" name="description_dir"/>
+			</parameters>
+		</constructor>
+	</add-node>
 	<add-node path="/api/namespace/object[@name='ServiceInfo']">
 		<method name="GetIntrospection" cname="gupnp_service_info_get_introspection">
 			<parameters>
@@ -23,9 +41,5 @@
 			<return-type type="GUPnPServiceIntrospection*"/>
 		</method>
 	</add-node>
-	<add-node path="/api/namespace/object[@name='ServiceIntrospection']">
-		<method name="ListActionNames" cname="gupnp_service_introspection_list_action_names">
-			<return-type type="const-GList*"/>
-		</method>
-	</add-node>
+	<remove-node path="/api/namespace/object[@name='NetworkManager']"></remove-node>
 </metadata>

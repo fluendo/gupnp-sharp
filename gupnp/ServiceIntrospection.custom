@@ -13,3 +13,12 @@ public GLib.List ListActionNames() {
 	GLib.List ret = new GLib.List(raw_ret, typeof(string), false, false);
 	return ret;
 }
+
+[DllImport("libgupnp-1.0.dll")]
+static extern IntPtr gupnp_service_introspection_list_state_variables(IntPtr raw);
+public GLib.List ListStateVariables() {
+	IntPtr raw_ret = gupnp_service_introspection_list_state_variables(Handle);
+	GLib.List ret = new GLib.List(raw_ret, typeof(GUPnP.ServiceStateVariableInfo), false, false);
+	return ret;
+}
+
