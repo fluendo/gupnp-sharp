@@ -1,0 +1,5 @@
+public GLib.List Arguments {
+	get {
+		return _arguments == IntPtr.Zero ? null : new GLib.List(_arguments, typeof(GUPnP.ServiceActionArgInfo), false, false);
+	}
+}
