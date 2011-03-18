@@ -1,4 +1,4 @@
-SUBDIRS = gssdp gupnp
+SUBDIRS = gssdp gupnp gupnp-av
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gupnp-sharp-1.0.pc

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<metadata>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Eq']" name="value">271</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Neq']" name="value">272</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Less']" name="value">273</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Leq']" name="value">274</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Greater']" name="value">275</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Geq']" name="value">276</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Contains']" name="value">277</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='DoesNotContain']" name="value">278</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='DerivedFrom']" name="value">279</attr>
+	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Exists']" name="value">280</attr>
+</metadata>

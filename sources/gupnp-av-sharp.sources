@@ -1,0 +1,10 @@
+<gapi-parser-input>
+  <api filename="../gupnp-av/gupnp-av-api.raw">
+    <library name="libgupnp-av-1.0.dll">
+      <namespace name="GUPnP">
+        <dir>../sources/gupnp-av-0.7.1/libgupnp-av/</dir>
+      </namespace>
+    </library>
+  </api>
+</gapi-parser-input>
+

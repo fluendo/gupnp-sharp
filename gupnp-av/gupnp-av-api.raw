@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<api>
+  <!--
+
+        This file was automatically generated.
+        Please DO NOT MODIFY THIS FILE, modify .metadata files instead.
+
+-->
+  <namespace name="GUPnP" library="libgupnp-av-1.0.dll">
+    <enum name="DLNAConversion" cname="GUPnPDLNAConversion" type="enum">
+      <member cname="GUPNP_DLNA_CONVERSION_NONE" name="None" />
+      <member cname="GUPNP_DLNA_CONVERSION_TRANSCODED" name="Transcoded" value="1" />
+    </enum>
+    <enum name="DLNAFlags" cname="GUPnPDLNAFlags" type="flags">
+      <member cname="GUPNP_DLNA_FLAGS_NONE" name="None" />
+      <member cname="GUPNP_DLNA_FLAGS_SENDER_PACED" name="SenderPaced" value="1 &lt;&lt; 31" />
+      <member cname="GUPNP_DLNA_FLAGS_TIME_BASED_SEEK" name="TimeBasedSeek" value="1 &lt;&lt; 30" />
+      <member cname="GUPNP_DLNA_FLAGS_BYTE_BASED_SEEK" name="ByteBasedSeek" value="1 &lt;&lt; 29" />
+      <member cname="GUPNP_DLNA_FLAGS_PLAY_CONTAINER" name="PlayContainer" value="1 &lt;&lt; 28" />
+      <member cname="GUPNP_DLNA_FLAGS_S0_INCREASE" name="S0Increase" value="1 &lt;&lt; 27" />
+      <member cname="GUPNP_DLNA_FLAGS_SN_INCREASE" name="SnIncrease" value="1 &lt;&lt; 26" />
+      <member cname="GUPNP_DLNA_FLAGS_RTSP_PAUSE" name="RtspPause" value="1 &lt;&lt; 25" />
+      <member cname="GUPNP_DLNA_FLAGS_STREAMING_TRANSFER_MODE" name="StreamingTransferMode" value="1 &lt;&lt; 24" />
+      <member cname="GUPNP_DLNA_FLAGS_INTERACTIVE_TRANSFER_MODE" name="InteractiveTransferMode" value="1 &lt;&lt; 23" />
+      <member cname="GUPNP_DLNA_FLAGS_BACKGROUND_TRANSFER_MODE" name="BackgroundTransferMode" value="1 &lt;&lt; 22" />
+      <member cname="GUPNP_DLNA_FLAGS_CONNECTION_STALL" name="ConnectionStall" value="1 &lt;&lt; 21" />
+      <member cname="GUPNP_DLNA_FLAGS_DLNA_V15" name="DlnaV15" value="1 &lt;&lt; 20" />
+    </enum>
+    <enum name="DLNAOperation" cname="GUPnPDLNAOperation" type="enum">
+      <member cname="GUPNP_DLNA_OPERATION_NONE" name="None" value="0x00" />
+      <member cname="GUPNP_DLNA_OPERATION_RANGE" name="Range" value="0x01" />
+      <member cname="GUPNP_DLNA_OPERATION_TIMESEEK" name="Timeseek" value="0x10" />
+    </enum>
+    <enum name="OCMFlags" cname="GUPnPOCMFlags" type="enum">
+      <member cname="GUPNP_OCM_FLAGS_NONE" name="None" value="0x0" />
+      <member cname="GUPNP_OCM_FLAGS_UPLOAD" name="Upload" value="0x01" />
+      <member cname="GUPNP_OCM_FLAGS_CREATE_CONTAINER" name="CreateContainer" value="0x02" />
+      <member cname="GUPNP_OCM_FLAGS_DESTROYABLE" name="Destroyable" value="0x04" />
+      <member cname="GUPNP_OCM_FLAGS_UPLOAD_DESTROYABLE" name="UploadDestroyable" value="0x08" />
+      <member cname="GUPNP_OCM_FLAGS_CHANGE_METADATA" name="ChangeMetadata" value="0x10" />
+    </enum>
+    <enum name="ProtocolError" cname="GUPnPProtocolError" type="enum">
+      <member cname="GUPNP_PROTOCOL_ERROR_INVALID_SYNTAX" name="InvalidSyntax" />
+      <member cname="GUPNP_PROTOCOL_ERROR_OTHER" name="Other" />
+    </enum>
+    <enum name="SearchCriteriaOp" cname="GUPnPSearchCriteriaOp" type="enum">
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_EQ" name="Eq" value="G_TOKEN_LAST + 1" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_NEQ" name="Neq" value="G_TOKEN_LAST + 2" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_LESS" name="Less" value="G_TOKEN_LAST + 3" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_LEQ" name="Leq" value="G_TOKEN_LAST + 4" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_GREATER" name="Greater" value="G_TOKEN_LAST + 5" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_GEQ" name="Geq" value="G_TOKEN_LAST + 6" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_CONTAINS" name="Contains" value="G_TOKEN_LAST + 7" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_DOES_NOT_CONTAIN" name="DoesNotContain" value="G_TOKEN_LAST + 8" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_DERIVED_FROM" name="DerivedFrom" value="G_TOKEN_LAST + 9" />
+      <member cname="GUPNP_SEARCH_CRITERIA_OP_EXISTS" name="Exists" value="G_TOKEN_LAST + 10" />
+    </enum>
+    <enum name="SearchCriteriaParserError" cname="GUPnPSearchCriteriaParserError" type="enum">
+      <member cname="GUPNP_SEARCH_CRITERIA_PARSER_ERROR_FAILED" name="Failed" />
+    </enum>
+    <object name="DIDLLiteContainer" cname="GUPnPDIDLLiteContainer" parent="GUPnPDIDLLiteObject">
+      <property name="Searchable" cname="searchable" type="gboolean" readable="true" writeable="true" />
+      <property name="ChildCount" cname="child-count" type="gint" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_didl_lite_container_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DIDLLiteContributor" cname="GUPnPDIDLLiteContributor" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPDIDLLiteContributorPrivate*" />
+      <property name="XmlNode" cname="xml-node" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="XmlDoc" cname="xml-doc" type="GupnpXmlDoc" writeable="true" construct-only="true" />
+      <property name="Role" cname="role" type="gchar*" readable="true" writeable="true" />
+      <property name="Name" cname="name" type="gchar*" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_didl_lite_contributor_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DIDLLiteDescriptor" cname="GUPnPDIDLLiteDescriptor" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPDIDLLiteDescriptorPrivate*" />
+      <property name="XmlNode" cname="xml-node" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="XmlDoc" cname="xml-doc" type="GupnpXmlDoc" writeable="true" construct-only="true" />
+      <property name="NameSpace" cname="name-space" type="gchar*" readable="true" writeable="true" />
+      <property name="Id" cname="id" type="gchar*" readable="true" writeable="true" />
+      <property name="MetadataType" cname="metadata-type" type="gchar*" readable="true" writeable="true" />
+      <property name="Content" cname="content" type="gchar*" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_didl_lite_descriptor_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DIDLLiteItem" cname="GUPnPDIDLLiteItem" parent="GUPnPDIDLLiteObject">
+      <property name="RefId" cname="ref-id" type="gchar*" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_didl_lite_item_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DIDLLiteObject" cname="GUPnPDIDLLiteObject" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPDIDLLiteObjectPrivate*" />
+      <property name="XmlNode" cname="xml-node" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="XmlDoc" cname="xml-doc" type="GupnpXmlDoc" writeable="true" construct-only="true" />
+      <property name="UpnpNamespace" cname="upnp-namespace" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="DcNamespace" cname="dc-namespace" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="DlnaNamespace" cname="dlna-namespace" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="Id" cname="id" type="gchar*" readable="true" writeable="true" />
+      <property name="ParentId" cname="parent-id" type="gchar*" readable="true" writeable="true" />
+      <property name="Restricted" cname="restricted" type="gboolean" readable="true" writeable="true" />
+      <property name="Title" cname="title" type="gchar*" readable="true" writeable="true" />
+      <property name="UpnpClass" cname="upnp-class" type="gchar*" readable="true" writeable="true" />
+      <property name="Creator" cname="creator" type="gchar*" readable="true" writeable="true" />
+      <property name="Artist" cname="artist" type="gchar*" readable="true" writeable="true" />
+      <property name="Author" cname="author" type="gchar*" readable="true" writeable="true" />
+      <property name="Genre" cname="genre" type="gchar*" readable="true" writeable="true" />
+      <property name="WriteStatus" cname="write-status" type="gchar*" readable="true" writeable="true" />
+      <property name="Album" cname="album" type="gchar*" readable="true" writeable="true" />
+      <property name="AlbumArt" cname="album-art" type="gchar*" readable="true" writeable="true" />
+      <property name="Description" cname="description" type="gchar*" readable="true" writeable="true" />
+      <property name="Date" cname="date" type="gchar*" readable="true" writeable="true" />
+      <property name="TrackNumber" cname="track-number" type="gint" readable="true" writeable="true" />
+      <property name="DlnaManaged" cname="dlna-managed" type="GupnpOcmFlags" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_didl_lite_object_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DIDLLiteParser" cname="GUPnPDIDLLiteParser" parent="GObject">
+      <field name="GupnpReserved" cname="gupnp_reserved" type="gpointer" />
+      <signal name="ObjectAvailable" cname="object-available" when="LAST" field_name="object_available">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPDIDLLiteParser*" name="parser" />
+          <parameter type="GUPnPDIDLLiteObject*" name="object" />
+        </parameters>
+      </signal>
+      <signal name="ItemAvailable" cname="item-available" when="LAST" field_name="item_available">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPDIDLLiteParser*" name="parser" />
+          <parameter type="GUPnPDIDLLiteItem*" name="item" />
+        </parameters>
+      </signal>
+      <signal name="ContainerAvailable" cname="container-available" when="LAST" field_name="container_available">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPDIDLLiteParser*" name="parser" />
+          <parameter type="GUPnPDIDLLiteContainer*" name="container" />
+        </parameters>
+      </signal>
+      <method name="GetType" cname="gupnp_didl_lite_parser_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DIDLLiteResource" cname="GUPnPDIDLLiteResource" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPDIDLLiteResourcePrivate*" />
+      <property name="XmlNode" cname="xml-node" type="gpointer" readable="true" writeable="true" construct-only="true" />
+      <property name="XmlDoc" cname="xml-doc" type="GupnpXmlDoc" writeable="true" construct-only="true" />
+      <property name="Uri" cname="uri" type="gchar*" readable="true" writeable="true" />
+      <property name="ImportUri" cname="import-uri" type="gchar*" readable="true" writeable="true" />
+      <property name="ProtocolInfo" cname="protocol-info" type="GupnpProtocolInfo" readable="true" writeable="true" />
+      <property name="Size" cname="size" type="long" readable="true" writeable="true" />
+      <property name="Size64" cname="size64" type="gint64" readable="true" writeable="true" />
+      <property name="Duration" cname="duration" type="long" readable="true" writeable="true" />
+      <property name="Bitrate" cname="bitrate" type="gint" readable="true" writeable="true" />
+      <property name="SampleFreq" cname="sample-freq" type="gint" readable="true" writeable="true" />
+      <property name="BitsPerSample" cname="bits-per-sample" type="gint" readable="true" writeable="true" />
+      <property name="Protection" cname="protection" type="gchar*" readable="true" writeable="true" />
+      <property name="AudioChannels" cname="audio-channels" type="gint" readable="true" writeable="true" />
+      <property name="Width" cname="width" type="gint" readable="true" writeable="true" />
+      <property name="Height" cname="height" type="gint" readable="true" writeable="true" />
+      <property name="ColorDepth" cname="color-depth" type="gint" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_didl_lite_resource_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="DIDLLiteWriter" cname="GUPnPDIDLLiteWriter" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPDIDLLiteWriterPrivate*" />
+      <property name="XmlNode" cname="xml-node" type="gpointer" readable="true" />
+      <property name="Language" cname="language" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <method name="GetType" cname="gupnp_didl_lite_writer_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="LastChangeParser" cname="GUPnPLastChangeParser" parent="GObject">
+      <method name="GetType" cname="gupnp_last_change_parser_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="ProtocolInfo" cname="GUPnPProtocolInfo" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPProtocolInfoPrivate*" />
+      <property name="Protocol" cname="protocol" type="gchar*" readable="true" writeable="true" />
+      <property name="Network" cname="network" type="gchar*" readable="true" writeable="true" />
+      <property name="MimeType" cname="mime-type" type="gchar*" readable="true" writeable="true" />
+      <property name="DlnaProfile" cname="dlna-profile" type="gchar*" readable="true" writeable="true" />
+      <property name="PlaySpeeds" cname="play-speeds" type="GStrv" readable="true" writeable="true" />
+      <property name="DlnaConversion" cname="dlna-conversion" type="GupnpDlnaConversion" readable="true" writeable="true" />
+      <property name="DlnaOperation" cname="dlna-operation" type="GupnpDlnaOperation" readable="true" writeable="true" />
+      <property name="DlnaFlags" cname="dlna-flags" type="GupnpDlnaFlags" readable="true" writeable="true" />
+      <method name="GetType" cname="gupnp_protocol_info_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="SearchCriteriaParser" cname="GUPnPSearchCriteriaParser" parent="GObject">
+      <field name="Priv" cname="priv" type="GUPnPSearchCriteriaParserPrivate*" />
+      <signal name="BeginParens" cname="begin-parens" when="LAST" field_name="begin_parens">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPSearchCriteriaParser*" name="parser" />
+        </parameters>
+      </signal>
+      <signal name="EndParens" cname="end-parens" when="LAST" field_name="end_parens">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPSearchCriteriaParser*" name="parser" />
+        </parameters>
+      </signal>
+      <signal name="Conjunction" cname="conjunction" when="LAST" field_name="conjunction">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPSearchCriteriaParser*" name="parser" />
+        </parameters>
+      </signal>
+      <signal name="Disjunction" cname="disjunction" when="LAST" field_name="disjunction">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GUPnPSearchCriteriaParser*" name="parser" />
+        </parameters>
+      </signal>
+      <signal name="Expression" cname="expression" when="LAST" manual="true" field_name="expression">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GUPnPSearchCriteriaParser*" name="parser" />
+          <parameter type="const-char*" name="property" />
+          <parameter type="GUPnPSearchCriteriaOp" name="op" />
+          <parameter type="const-char*" name="value" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </signal>
+      <method name="ErrorQuark" cname="gupnp_search_criteria_parser_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+      <method name="GetType" cname="gupnp_search_criteria_parser_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <class name="Global" cname="GUPnPGlobal">
+      <method name="ProtocolErrorQuark" cname="gupnp_protocol_error_quark" shared="true">
+        <return-type type="GQuark" />
+      </method>
+    </class>
+  </namespace>
+</api>

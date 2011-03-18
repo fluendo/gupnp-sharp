@@ -90,6 +90,9 @@ AC_SUBST(GACUTIL)
 
 AC_OUTPUT([
 Makefile
+gupnp-av/gupnp-av-sharp.dll.config
+gupnp-av/Makefile
+gupnp-av/AssemblyInfo.cs
 gupnp/gupnp-sharp.dll.config
 gupnp/Makefile
 gupnp/AssemblyInfo.cs
