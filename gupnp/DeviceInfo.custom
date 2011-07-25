@@ -1,0 +1,8 @@
+[DllImport("libgupnp-1.0.dll")]
+static extern IntPtr gupnp_device_info_get_services(IntPtr raw);
+public GLib.List ListActions() {
+	IntPtr raw_ret = gupnp_device_info_get_services(Handle);
+	GLib.List ret = new GLib.List(raw_ret, typeof(GUPnP.ServiceInfo), false, false);
+	return ret;
+}
+
