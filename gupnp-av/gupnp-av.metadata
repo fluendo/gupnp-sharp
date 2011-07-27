@@ -10,4 +10,24 @@
 	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='DoesNotContain']" name="value">278</attr>
 	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='DerivedFrom']" name="value">279</attr>
 	<attr path="/api/namespace/enum[@name='SearchCriteriaOp']/member[@name='Exists']" name="value">280</attr>
+	<attr path="/api/namespace/object[@name='DIDLLiteDescriptor']/property[@name='XmlDoc']" name="type">GUPnPXMLDoc</attr>
+	<attr path="/api/namespace/object[@name='DIDLLiteObject']/property[@name='XmlDoc']" name="type">GUPnPXMLDoc</attr>
+	<attr path="/api/namespace/object[@name='DIDLLiteContributor']/property[@name='XmlDoc']" name="type">GUPnPXMLDoc</attr>
+	<attr path="/api/namespace/object[@name='DIDLLiteResource']/property[@name='XmlDoc']" name="type">GUPnPXMLDoc</attr>
+	<attr path="/api/namespace/object[@name='SearchCriteriaParser']/signal[@name='Expression']/*/parameter[@type='GError**']" name="type">const-GError*</attr>
+	<add-node path="/api/namespace/object[@name='DIDLLiteParser']">
+		<method name="ParseDIDL" cname="gupnp_didl_lite_parser_parse_didl" shared="false">
+			<parameters>
+				<parameter type="const-char*" name="didl" />
+				<parameter type="GError**" name="error" />
+			</parameters>
+			<return-type type="gboolean" />
+		</method>
+	</add-node>
+	<add-node path="/api/namespace/object[@name='DIDLLiteObject']">
+		<method name="GetResources" cname="gupnp_didl_lite_object_get_resources">
+			<return-type type="GList*" element_type="GUPnPDIDLLiteResource*" owned="true"/>
+		</method>
+	</add-node>
+
 </metadata>
