@@ -1,0 +1,93 @@
+[DllImport("libgupnp-1.0.dll")]
+static extern bool gupnp_service_proxy_send_action_list(IntPtr proxy, IntPtr action, out IntPtr error, IntPtr InNames, IntPtr InValues, IntPtr OutNames, IntPtr OutTypes, out IntPtr OutValues);
+public bool SendActionList (string action, string[] in_names, object[] in_values, string[] out_names, Type[] out_types, out object[] out_values) {
+	IntPtr error = IntPtr.Zero;
+	IntPtr native_action = GLib.Marshaller.StringToPtrGStrdup(action);
+	IntPtr out_handler = IntPtr.Zero;
+	Array out_temp_values;
+	GLib.List native_in_values = new GLib.List(typeof(GLib.Value));
+	GLib.List native_in_names = new GLib.List(in_names, typeof(string), false, false);
+	GLib.List native_out_names = new GLib.List(out_names, typeof(string), false, false);
+	GLib.List native_out_types = new GLib.List(typeof(GLib.GType));
+
+	foreach (object o in in_values)
+	{
+		if (o is string)
+		{
+			GLib.Value input = new GLib.Value((string)o);
+			native_in_values.Append(input);
+		}
+
+		if (o is int)
+		{
+			GLib.Value input = new GLib.Value((int)o);
+			native_in_values.Append(input);
+		}
+
+		if (o is uint)
+		{
+			GLib.Value input = new GLib.Value((uint)o);
+			native_in_values.Append(input);
+		}
+
+		if (o is bool)
+		{
+			GLib.Value input = new GLib.Value((bool)o);
+			native_in_values.Append(input);
+		}
+
+		if (o is char)
+		{
+			GLib.Value input = new GLib.Value((char)o);
+			native_in_values.Append(input);
+		}
+
+		/*if (o is typeof(DateTime))
+		{
+			GLib.Value input = new GLib.Value((DateTime)o);
+			native_in_values.Append(input);
+		}*/
+	}
+
+	foreach (Type type in out_types)
+	{
+		if ((type == typeof(string)))
+		{
+			native_out_types.Append(GLib.GType.String.Val);
+		}
+
+		if ((type == typeof(int)))
+		{
+			native_out_types.Append(GLib.GType.Int.Val);
+		}
+
+		if ((type == typeof(uint)))
+		{
+			native_out_types.Append(GLib.GType.UInt.Val);
+		}
+
+		if ((type == typeof(bool)))
+		{
+			native_out_types.Append(GLib.GType.Boolean.Val);
+		}
+
+		if ((type == typeof(char)))
+		{
+			native_out_types.Append(GLib.GType.Char.Val);
+		}
+	}
+
+	bool result = gupnp_service_proxy_send_action_list(this.Raw, native_action, out error, native_in_names.Handle, native_in_values.Handle, native_out_names.Handle, native_out_types.Handle, out out_handler);
+	if (error != IntPtr.Zero) throw new GLib.GException (error);
+
+	out_temp_values = GLib.Marshaller.ListPtrToArray(out_handler, typeof(GLib.List), false, false, typeof(GLib.Value));
+	out_values = new object[out_temp_values.Length];
+
+	for (int i = 0; i < out_temp_values.Length; i++)
+	{
+		GLib.Value v = (GLib.Value)out_temp_values.GetValue(i);
+		out_values[i] = v.Val;
+	}
+
+	return result;
+}

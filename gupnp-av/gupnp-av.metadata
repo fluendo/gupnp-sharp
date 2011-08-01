@@ -23,6 +23,7 @@
 			</parameters>
 			<return-type type="gboolean" />
 		</method>
+		<constructor cname="gupnp_didl_lite_parser_new"/>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DIDLLiteObject']">
 		<method name="GetResources" cname="gupnp_didl_lite_object_get_resources">
