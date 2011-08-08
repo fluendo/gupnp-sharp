@@ -34,7 +34,7 @@
 		</constructor>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='ServiceInfo']">
-		<method name="GetIntrospection" cname="gupnp_service_info_get_introspection">
+		<method name="GetIntrospection" cname="gupnp_device_info_get_introspection">
 			<parameters>
 				<parameter type="GError**" name="error"/>
 			</parameters>
@@ -42,37 +42,37 @@
 		</method>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DeviceInfo']">
-		<method name="GetFriendlyName" cname="gupnp_service_info_get_friendly_name">
+		<method name="GetFriendlyName" cname="gupnp_device_info_get_friendly_name">
 			<return-type type="char*" />
 		</method>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DeviceInfo']">
-		<method name="GetManufacturer" cname="gupnp_service_info_get_manufacterer">
+		<method name="GetManufacturer" cname="gupnp_device_info_get_manufacturer">
 			<return-type type="char*" />
 		</method>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DeviceInfo']">
-		<method name="GetModelName" cname="gupnp_service_info_get_model_name">
+		<method name="GetModelName" cname="gupnp_device_info_get_model_name">
 			<return-type type="char*" />
 		</method>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DeviceInfo']">
-		<method name="GetModelNumber" cname="gupnp_service_info_get_model_number">
+		<method name="GetModelNumber" cname="gupnp_device_info_get_model_number">
 			<return-type type="char*" />
 		</method>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DeviceInfo']">
-		<method name="GetModelDescription" cname="gupnp_service_info_get_model_description">
+		<method name="GetModelDescription" cname="gupnp_device_info_get_model_description">
 			<return-type type="char*" />
 		</method>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DeviceInfo']">
-		<method name="GetSerialNumber" cname="gupnp_service_info_get_serial_number">
+		<method name="GetSerialNumber" cname="gupnp_device_info_get_serial_number">
 			<return-type type="char*" />
 		</method>
 	</add-node>
 	<add-node path="/api/namespace/object[@name='DeviceInfo']">
-		<method name="GetPresentationUrl" cname="gupnp_service_info_get_presentation_url">
+		<method name="GetPresentationUrl" cname="gupnp_device_info_get_presentation_url">
 			<return-type type="char*" />
 		</method>
 	</add-node>
